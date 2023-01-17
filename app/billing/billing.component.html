@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="heading1">Hospital Patients Details</h1>
+    <div class="col-lg-4">
+      <form [formGroup]="billForm">
+        <div class="box-form ">
+         <div class="container" style="margin-top: 5%;">
+          <h2 class="f-heading" ><i class='fas fa-file-invoice'  style='font-size:40px'></i> </h2>
+   
+
+            <label for="fname">Name:</label>
+                <input type="text" class="form-control"  placeholder="Enter name" formControlName="name"  >        
+
+                  <label for="phone"> Age:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Age" formControlName="age">     
+              
+                  <label for="phone"> Mobile No:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Mobile No" formControlName="mobile">     
+                  
+                  <label for="phone"> Amount:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="amt">     
+                  
+                               
+         <button type="button" (click)=" clear()"class="btn1 " >Clear</button>
+         <button type="button" (click)=" submit()" class="btn2 " *ngIf="isEditClicked == false">Add</button>
+         <button type="button" (click)=" update()"class="btn2 " *ngIf="isEditClicked == true">Update</button>
+        </div>
+        </div>
+      </form>
+    </div>
+    
+    <div class="col-lg-8">
+      
+      <table class="table table-bordered ">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Mobile No.</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of billData; let i=index">
+          <td >{{i+1}}</td>
+          <td >{{bill.name}}</td>
+          <td >{{bill.age}}</td>
+          <td >{{bill.mobile }}</td>
+          <td >{{bill.amt}}</td>
+          
+          <td><button class="btne " (click)="edit(i)" >Edit</button>
+            <button class="btnd " (click)="Delete(i)">Delete</button></td>
+        </tr>
+      </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

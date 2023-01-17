@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="heading1">Hospital Patients Details</h1>
+    <div class="col-lg-4">
+      <form [formGroup]="patientForm">
+        <div class="box-form ">
+         <div class="container" style="margin-top: 5%;">
+          <h2 class="f-heading" ><i class='fas fa-user-alt'  style='font-size:40px'></i> </h2>
+   
+
+            <label for="fname">Name:</label>
+                <input type="text" class="form-control"  placeholder="Enter name" formControlName="name"  >        
+
+                  <label for="phone" class="form-label">Gender:</label><br>
+                    <input type="radio" id="Male" name="gender" value="Male" formControlName="gender">Male
+                    <input type="radio" id="Female" name="gender" value="Female" formControlName="gender">Female<br><br>
+             
+                  <label for="phone"> Age:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Age" formControlName="age">     
+              
+                  <label for="phone"> Mobile No:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Mobile No" formControlName="mobile">     
+                     
+                               
+         <button type="button" (click)=" clear()"class="btn1 " >Clear</button>
+         <button type="button" (click)=" submit()" class="btn2 " *ngIf="isEditClicked == false">Add</button>
+         <button type="button" (click)=" update()"class="btn2 " *ngIf="isEditClicked == true">Update</button>
+        </div>
+        </div>
+      </form>
+    </div>
+    
+    <div class="col-lg-8">
+      
+      <table class="table table-bordered ">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Mobile No.</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Patient of patientData; let i=index">
+          <td >{{i+1}}</td>
+          <td >{{Patient.name}}</td>
+          <td >{{Patient.gender}}</td>
+          <td >{{Patient.age }}</td>
+          <td >{{Patient.mobile}}</td>
+          
+          <td><button class="btne " (click)="edit(i)" >Edit</button>
+            <button class="btnd " (click)="Delete(i)">Delete</button></td>
+        </tr>
+      </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
